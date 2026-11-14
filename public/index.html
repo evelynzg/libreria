@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Librería · Inventario</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600&family=Young+Serif&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <h1>Inventario de la librería</h1>
+  <p class="sub">Agrega, busca, edita y elimina libros.</p>
+  <div class="bar">
+    <input id="q" type="search" placeholder="Buscar por título, autor o ISBN" aria-label="Buscar">
+    <select id="fg" aria-label="Filtrar por género"></select>
+    <button class="primary" id="new">Agregar libro</button>
+  </div>
+  <div class="stats" id="stats"></div>
+  <ul id="list"></ul>
+</main>
+
+<dialog id="dlg">
+  <form id="f" method="dialog" novalidate>
+    <h2 id="dt">Agregar libro</h2>
+    <div class="grid">
+      <label class="full">Título<input id="titulo" required></label>
+      <label>Autor<input id="autor" required></label>
+      <label>ISBN<input id="isbn" placeholder="978…"></label>
+      <label>Género<select id="genero"></select></label>
+      <label>Precio (COP)<input id="precio" type="number" min="0" step="100" required></label>
+      <label>Stock<input id="stock" type="number" min="0" step="1" required></label>
+    </div>
+    <p class="err" id="err" role="alert"></p>
+    <div class="foot">
+      <button type="button" id="cancel">Cancelar</button>
+      <button class="primary" type="submit" id="save">Guardar libro</button>
+    </div>
+  </form>
+</dialog>
+
+<script src="app.js"></script>
+</body>
+</html>
