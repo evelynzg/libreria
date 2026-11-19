@@ -2,40 +2,79 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Librería · Inventario</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mi Librería · Libros nuevos y usados</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600&family=Young+Serif&display=swap">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<main>
-  <h1>Inventario de la librería</h1>
-  <p class="sub">Agrega, busca, edita y elimina libros.</p>
-  <div class="bar">
-    <input id="q" type="search" placeholder="Buscar por título, autor o ISBN" aria-label="Buscar">
-    <select id="fg" aria-label="Filtrar por género"></select>
-    <button class="primary" id="new">Agregar libro</button>
+<header class="top">
+  <strong class="brand">Mi Librería</strong>
+  <button id="adminBtn" class="ghost">Modo administrador</button>
+</header>
+
+<section class="hero">
+  <!-- Cambia estos textos por los de tu librería -->
+  <h1>Libros nuevos y usados, con envíos a toda Colombia</h1>
+  <p>Novelas, cuentos, libros infantiles y técnicos. Elige tu libro y pídelo por WhatsApp.</p>
+  <input id="q" type="search" placeholder="Busca por título, autor o ISBN" aria-label="Buscar libros">
+  <div class="ctas">
+    <button class="primary" data-vista="todo">Explorar catálogo</button>
+    <button data-vista="reco">Recomendados del mes</button>
+    <button data-vista="nuevo">Ver novedades</button>
   </div>
-  <div class="stats" id="stats"></div>
-  <ul id="list"></ul>
+</section>
+
+<main id="catalogo">
+  <div class="filtros">
+    <select id="fg" aria-label="Género"></select>
+    <select id="ff" aria-label="Formato"></select>
+    <select id="fp" aria-label="Precio máximo">
+      <option value="0">Cualquier precio</option>
+      <option value="40000">Hasta $40.000</option>
+      <option value="80000">Hasta $80.000</option>
+      <option value="120000">Hasta $120.000</option>
+    </select>
+    <label class="chk"><input type="checkbox" id="fs"> Solo disponibles</label>
+  </div>
+
+  <div class="titulo-fila">
+    <h2 id="vt">Catálogo</h2>
+    <button class="primary solo-admin" id="new" hidden>Agregar libro</button>
+  </div>
+  <p class="m" id="stats"></p>
+  <div id="grid" class="grid"></div>
 </main>
+
+<!-- Políticas: texto de ejemplo, cámbialo por el tuyo -->
+<section class="info">
+  <div><h3>Envíos</h3><p>Enviamos a todo el país. Entrega estimada de 2 a 5 días hábiles según la ciudad.</p></div>
+  <div><h3>Pagos</h3><p>Transferencia, Nequi o pago contra entrega en ciudades seleccionadas.</p></div>
+  <div><h3>Cambios</h3><p>Si llega dañado o te equivocaste de título, lo cambiamos dentro de los 8 días siguientes.</p></div>
+</section>
+<footer class="foot-page">Mi Librería · Pedidos por WhatsApp</footer>
+
+<dialog id="det"></dialog>
 
 <dialog id="dlg">
   <form id="f" method="dialog" novalidate>
     <h2 id="dt">Agregar libro</h2>
-    <div class="grid">
+    <div class="fgrid">
       <label class="full">Título<input id="titulo" required></label>
       <label>Autor<input id="autor" required></label>
       <label>ISBN<input id="isbn" placeholder="978…"></label>
       <label>Género<select id="genero"></select></label>
+      <label>Formato<select id="formato"></select></label>
       <label>Precio (COP)<input id="precio" type="number" min="0" step="100" required></label>
       <label>Stock<input id="stock" type="number" min="0" step="1" required></label>
+      <label>Editorial<input id="editorial"></label>
+      <label>Año<input id="anio" type="number" min="1000" max="2100"></label>
+      <label class="full">Enlace de la portada (opcional)<input id="portada" placeholder="https://…"></label>
+      <label class="full">Sinopsis breve<textarea id="sinopsis" rows="3"></textarea></label>
+      <label class="chk full"><input type="checkbox" id="recomendado"> Recomendado del mes</label>
     </div>
     <p class="err" id="err" role="alert"></p>
-    <div class="foot">
-      <button type="button" id="cancel">Cancelar</button>
-      <button class="primary" type="submit" id="save">Guardar libro</button>
-    </div>
+    <div class="foot"><button type="button" id="cancel">Cancelar</button><button class="primary" type="submit">Guardar libro</button></div>
   </form>
 </dialog>
 
