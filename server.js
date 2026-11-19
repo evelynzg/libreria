@@ -124,3 +124,4 @@ const PORT = process.env.PORT || 3000;
 iniciarBD()
   .then(() => app.listen(PORT, () => console.log(`Servidor listo en http://localhost:${PORT}`)))
   .catch(e => { console.error("No se pudo conectar a la base de datos:", e.message); process.exit(1); });
+  if (d.isbn && d.isbn.length > 20) return { error: "El ISBN es demasiado largo (máximo 20 caracteres). Escribe solo el número." };
