@@ -1,4 +1,4 @@
-const WHATSAPP = "573000000000"; // Cambia por tu número: código de país + número, sin + ni espacios
+const WHATSAPP = "573122496067"; // Cambia por tu número: código de país + número, sin + ni espacios
 const GENEROS = ["Novela","Cuento","Poesía","Ensayo","Historia","Infantil","Técnico"];
 const FORMATOS = ["Tapa blanda","Tapa dura","Digital"];
 const COLORES = {Novela:"#1f5c4d",Cuento:"#b5651d",Poesía:"#7b3f7a",Ensayo:"#2d5a8a",Historia:"#8a2d3b",Infantil:"#c28a14",Técnico:"#4a5568"};
